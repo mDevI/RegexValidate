@@ -14,8 +14,7 @@ public class EmailValidator implements ConstantManager {
     Matcher matcher;
 
     /*
-    * Class contructor
-    *
+    * Class constructor.
     * */
 
     public EmailValidator(){
