@@ -1,14 +1,14 @@
 package com.mDevI;
 
-import com.mDevI.Utils.*;
-
+import com.mDevI.Utils.EmailValidator;
+import com.mDevI.Utils.UrlValidator;
 
 public class Main {
 
     public static void main(String[] args) {
-	// write your code here
+        // write your code here
 
-        String[] rawDataEmailsStrings = { "mkyong@yahoo.com",
+        String[] rawDataEmailsStrings = {"mkyong@yahoo.com",
                 "mkyong-100@yahoo.com", "mkyong.100@yahoo.com",
                 "mkyong111@mkyong.com", "mkyong-100@mkyong.net",
                 "mkyong.100@mkyong.com.au", "mkyong@1.com",
@@ -24,34 +24,37 @@ public class Main {
         };
 
         String[] rawDataUsersUrl = {
-                "http://www.rbc.ru", "https://github.com","toster.ru","avr.ru", "www.vcs.ru"
+                "http://www.rbc.ru", "https://github.com", "toster.ru", "avr.ru", "www.vcs.ru"
         };
 
         EmailValidator emailValidator = new EmailValidator();
 
-        for (String temp: rawDataEmailsStrings
-             ) {
-            if (emailValidator.isValid(temp)){
+        for (String temp : rawDataEmailsStrings
+                ) {
+            if (emailValidator.isValid(temp)) {
                 System.out.println(temp + " is valid");
             } else {
-                System.out.println(temp+ " is not valid");
+                System.out.println(temp + " is not valid");
             }
         }
 
 
         UrlValidator urlValidator = new UrlValidator();
 
-        for (String tempUrl: rawDataUsersUrl) {
+        for (String tempUrl : rawDataUsersUrl) {
 
             try {
-                System.out.println("For URI: "+ tempUrl+ " we have HOST as:" + urlValidator.GetHostFromURL(tempUrl));
-            } catch ( Exception e){
-             System.out.println(e.getMessage().toString());
+                System.out.println("For URI: " + tempUrl + " we have HOST as:" + urlValidator.GetHostFromURL(tempUrl));
+                System.out.println();
+                System.out.println("For String:" + tempUrl + " we have " + urlValidator.String2Uri(tempUrl));
+            } catch (Exception e) {
+
+                System.out.println("For String: " + tempUrl + " impossible create URI");
+                // System.out.println(e.getMessage().toString());
             }
 
+
         }
-
-
 
     }
 }
